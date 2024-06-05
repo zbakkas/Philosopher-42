@@ -6,7 +6,7 @@
 /*   By: zbakkas <zouhirbakkas@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:21:28 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/06/04 17:34:23 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/06/05 11:02:18 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	*routine(void *arg)
 {
 	t_philo			*args;
-	struct timeval	current;
 
 	args = (t_philo *) arg;
 	if (args->n_philo % 2 == 0)
@@ -96,7 +95,8 @@ void	check(t_args *args)
 				args->philo[i].c_eat = 0;
 				args->finish++;
 			}
-			if (timer(args) - args->philo[i].last_eat >= args->t_die)
+			if (timer(args) - args->philo[i].last_eat 
+				>= (unsigned long)args->t_die)
 			{
 				if (args->finish < args->philosophers)
 					message("died", &args->philo[i]);

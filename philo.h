@@ -6,7 +6,7 @@
 /*   By: zbakkas <zouhirbakkas@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:36:03 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/06/04 17:38:49 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/06/05 10:59:18 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ typedef struct s_args
 }t_args;
 
 int			ft_atoi(char *str);
-long int	timer(t_args *args);
-int			ft_usleep(int milliseconds, t_philo *philo);
+size_t		timer(t_args *args);
+int			ft_usleep(size_t milliseconds, t_philo *philo);
 size_t		get_current_time(void);
 void		check(t_args *args);
 void		initialize_data(t_args *args, int arc, char **arv);
@@ -61,5 +61,7 @@ void		message(char *str, t_philo *philo);
 void		take_forks(t_philo *philo);
 void		dow_forks(t_philo *philo);
 void		eat(t_philo *philo);
+
+int			ft_strcmp(char *s1, char *s2);
 
 #endif

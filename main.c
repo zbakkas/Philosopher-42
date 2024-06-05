@@ -6,17 +6,16 @@
 /*   By: zbakkas <zouhirbakkas@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:23:05 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/06/04 17:30:44 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/06/05 10:54:15 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <string.h>
 
 void	message(char *str, t_philo *philo)
 {
 	pthread_mutex_lock(&philo->args->m_write);
-	if (!philo->args->die_s && strcmp("died", str) == 0)
+	if (!philo->args->die_s && ft_strcmp("died", str) == 0)
 	{
 		printf("%ld %d %s\n", timer(philo->args), philo->n_philo, str);
 		pthread_mutex_lock(&philo->args->m_die);
