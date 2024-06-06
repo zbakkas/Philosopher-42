@@ -6,7 +6,7 @@
 /*   By: zbakkas <zouhirbakkas@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:21:28 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/06/05 11:02:18 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/06/06 15:24:56 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	initialize_philo(t_args *args, int i)
 	pthread_create(&args->philo[i].thread, NULL, routine, &args->philo[i]);
 }
 
-void	initialize_data(t_args *args, int arc, char **arv)
+int	initialize_data(t_args *args, int arc, char **arv)
 {
 	int	i;
 
@@ -71,6 +71,8 @@ void	initialize_data(t_args *args, int arc, char **arv)
 		args->w = ft_atoi(arv[5]);
 	else
 		args->w = -1;
+	if (check_v_arguments(*args, arc))
+		return (1);
 	pthread_mutex_init(&args->m_die, NULL); 
 	pthread_mutex_init(&args->m_write, NULL); 
 	pthread_mutex_init(&args->m_eat, NULL);
@@ -78,6 +80,7 @@ void	initialize_data(t_args *args, int arc, char **arv)
 	args->start = get_current_time();
 	while (i < args->philosophers)
 		initialize_philo(args, i++);
+	return (0);
 }
 
 void	check(t_args *args)

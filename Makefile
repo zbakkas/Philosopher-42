@@ -1,5 +1,5 @@
 CC = cc
-FLAGES= -Wall -Wextra -Werror
+FLAGES= -Wall -Wextra -Werror -t
 NAME = philo
 RM = rm -f
 

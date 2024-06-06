@@ -6,7 +6,7 @@
 /*   By: zbakkas <zouhirbakkas@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:23:05 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/06/05 10:54:15 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/06/06 14:28:30 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ int	main(int arc, char **arv)
 	int		i;
 
 	i = 0;
-	initialize_data(&args, arc, arv);
+	if (check_n_arguments(arc))
+		return (1);
+	if (initialize_data(&args, arc, arv))
+		return (1);
 	check(&args);
 	i = 0;
 	while (i < args.philosophers)
-	{
-		pthread_join(args.philo[i].thread, NULL);
-		i++;
-	}
+		pthread_join(args.philo[i++].thread, NULL);
 	i = 0;
 	while (i < args.philosophers)
 	{

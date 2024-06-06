@@ -6,7 +6,7 @@
 /*   By: zbakkas <zouhirbakkas@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:36:03 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/06/05 10:59:18 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/06/06 14:27:47 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ size_t		timer(t_args *args);
 int			ft_usleep(size_t milliseconds, t_philo *philo);
 size_t		get_current_time(void);
 void		check(t_args *args);
-void		initialize_data(t_args *args, int arc, char **arv);
+int			initialize_data(t_args *args, int arc, char **arv);
 
 void		message(char *str, t_philo *philo);
 void		take_forks(t_philo *philo);
@@ -63,5 +63,8 @@ void		dow_forks(t_philo *philo);
 void		eat(t_philo *philo);
 
 int			ft_strcmp(char *s1, char *s2);
+
+int			check_n_arguments(int arc);
+int			check_v_arguments(t_args args, int arc);
 
 #endif
