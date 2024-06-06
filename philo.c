@@ -6,11 +6,22 @@
 /*   By: zbakkas <zouhirbakkas@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:21:28 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/06/06 15:24:56 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/06/06 16:13:25 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static void	*one_philo(void *arg)
+{
+	t_args			*args;
+
+	args = (t_args *) arg;
+	printf("0 1 is thinking\n0 1 has taken a fork\n");
+	usleep(args->t_die * 1000);
+	printf("%d 1 died", args->t_die);
+	return (NULL);
+}
 
 static void	*routine(void *arg)
 {
@@ -42,6 +53,11 @@ static void	*routine(void *arg)
 
 static void	initialize_philo(t_args *args, int i)
 {
+	if (args->philosophers == 1)
+	{
+		pthread_create(&args->philo[i].thread, NULL, one_philo, args);
+		return ;
+	}
 	args->philo[i].args = args;
 	args->philo[i].n_philo = i + 1;
 	args->philo[i].last_eat = 0;
@@ -87,7 +103,7 @@ void	check(t_args *args)
 {
 	int	i;
 
-	while (1)
+	while (1 && args->philosophers != 1)
 	{
 		i = 0;
 		while (i < args->philosophers)
