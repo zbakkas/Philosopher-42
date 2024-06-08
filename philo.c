@@ -6,7 +6,7 @@
 /*   By: zbakkas <zouhirbakkas@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:21:28 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/06/06 16:13:25 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/06/07 13:15:20 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static void	*routine(void *arg)
 	while (1)
 	{
 		pthread_mutex_lock(&args->args->m_die);
-		pthread_mutex_lock(&args->args->m_eat);
+		// pthread_mutex_lock(&args->args->m_eat);
 		if (args->args->die_s || args->args->finish >= args->args->philosophers)
 		{
-			pthread_mutex_unlock(&args->args->m_eat);
+			// pthread_mutex_unlock(&args->args->m_eat);
 			pthread_mutex_unlock(&args->args->m_die);
 			break ;
 		}
-		pthread_mutex_unlock(&args->args->m_eat);
+		// pthread_mutex_unlock(&args->args->m_eat);
 		pthread_mutex_unlock(&args->args->m_die);
 		message("is thinking", args);
 		eat(args);
